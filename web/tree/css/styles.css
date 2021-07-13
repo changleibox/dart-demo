@@ -1,0 +1,31 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+
+html, body {
+  width: 100%;
+  height: 100%;
+  padding: 0px;
+  margin: 0px;
+  font-family: 'Roboto', sans-serif;
+  background-color: #1d0d21;
+  clear: both;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+canvas {
+  flex-shrink: 0;
+  background-color: #222;
+  image-rendering: -moz-crisp-edges;
+  image-rendering: -webkit-crisp-edges;
+  image-rendering: pixelated;
+  object-fit: contain;
+}
+
+#output {
+  padding: 0px;
+  margin: 0px;
+  text-align: center;
+}
