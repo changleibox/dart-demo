@@ -1,12 +1,12 @@
 import 'dart:math' as math;
 
 class Vector {
-  double _x;
-  double _y;
+  double x;
+  double y;
 
   Vector(double x, double y)
-      : _x = x ?? 0,
-        _y = y ?? 0;
+      : x = x ?? 0,
+        y = y ?? 0;
 
   factory Vector.fromAngle(double angle) {
     var x = math.cos(angle);
@@ -14,46 +14,38 @@ class Vector {
     return Vector(x, y);
   }
 
-  double get x => _x;
-
-  double get y => _y;
-
-  set x(double x) => _x = x;
-
-  set y(double y) => _y = y;
-
   void setValue(double x, double y) {
-    _x = x;
-    _y = y;
+    this.x = x;
+    this.y = y;
   }
 
   void reset() {
-    _x = 0;
-    _y = 0;
+    x = 0;
+    y = 0;
   }
 
   void add(Vector vector) {
-    _x += vector._x;
-    _y += vector._y;
+    x += vector.x;
+    y += vector.y;
   }
 
   void sub(Vector vector) {
-    _x -= vector._x;
-    _y -= vector._y;
+    x -= vector.x;
+    y -= vector.y;
   }
 
   void mult(double scalar) {
-    _x *= scalar;
-    _y *= scalar;
+    x *= scalar;
+    y *= scalar;
   }
 
   void div(scalar) {
-    _x /= scalar;
-    _y /= scalar;
+    x /= scalar;
+    y /= scalar;
   }
 
   double dot(Vector vector) {
-    return vector._x * _x + vector._y * _y;
+    return vector.x * x + vector.y * y;
   }
 
   void limit(double limitValue) {
@@ -62,14 +54,14 @@ class Vector {
     }
   }
 
-  double get mag => math.sqrt(math.pow(_x, 2) + math.pow(_y, 2));
+  double get mag => math.sqrt(math.pow(x, 2) + math.pow(y, 2));
 
   set mag(double newMag) {
     if (mag > 0) {
       normalize();
     } else {
-      _x = 1;
-      _y = 0;
+      x = 1;
+      y = 0;
     }
     mult(newMag);
   }
@@ -77,22 +69,22 @@ class Vector {
   void normalize() {
     var mag = this.mag;
     if (mag > 0) {
-      _x /= mag;
-      _y /= mag;
+      x /= mag;
+      y /= mag;
     }
   }
 
-  double get heading => math.atan2(_y, _x);
+  double get heading => math.atan2(y, x);
 
   set heading(double angle) {
     var mag = this.mag;
-    _x = math.cos(angle) * mag;
-    _y = math.sin(angle) * mag;
+    x = math.cos(angle) * mag;
+    y = math.sin(angle) * mag;
   }
 
-  double dist(Vector vector) => Vector(_x - vector._x, _y - vector._y).mag;
+  double dist(Vector vector) => Vector(x - vector.x, y - vector.y).mag;
 
-  double angle(Vector vector) => math.atan2(vector._y - _y, vector._x - _x);
+  double angle(Vector vector) => math.atan2(vector.y - y, vector.x - x);
 
-  Vector copy() => Vector(_x, _y);
+  Vector copy() => Vector(x, y);
 }
